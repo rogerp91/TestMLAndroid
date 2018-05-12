@@ -83,12 +83,16 @@ public class SearchItem extends AbstractRestService<SearchDefinition> {
         getService().searchQuery(mSite, mQuery, mPagin).enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
-
+                if (response.isSuccessful()) {
+                    searchCallback.onSuccess(response.body());
+                } else {
+                    searchCallback.onError(new RuntimeException("Unexpected response " + response));
+                }
             }
 
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
-
+                searchCallback.onError(new Exception(t.getMessage(), t.getCause()));
             }
         });
     }

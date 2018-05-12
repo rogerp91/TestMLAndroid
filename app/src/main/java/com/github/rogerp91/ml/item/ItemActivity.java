@@ -3,7 +3,6 @@ package com.github.rogerp91.ml.item;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,9 +10,11 @@ import android.widget.FrameLayout;
 
 import com.github.rogerp91.ml.R;
 import com.github.rogerp91.ml.common.BaseActivity;
-import com.github.rogerp91.ml.domain.executor.MainThread;
-import com.github.rogerp91.ml.domain.executor.PoolThreadExecutor;
-import com.github.rogerp91.ml.domain.interactor.ItemList;
+import com.github.rogerp91.ml.data.source.SearchDataSource;
+import com.github.rogerp91.ml.data.source.SearchRepository;
+import com.github.rogerp91.ml.data.source.local.SearchDatabase;
+import com.github.rogerp91.ml.data.source.local.SearchLocalDataSource;
+import com.github.rogerp91.ml.util.AppExecutors;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import butterknife.BindView;
@@ -46,41 +47,31 @@ public class ItemActivity extends BaseActivity {
     protected void onCreateView(Bundle savedInstanceState) {
         setToolbar(tolbar);
         setName(getResources().getString(R.string.app_name));
+        initializeSearchFragment();
 
+        SearchDatabase database = SearchDatabase.getInstance(getApplicationContext());
+        SearchDataSource mRepository = SearchRepository.getInstance(SearchLocalDataSource.getInstance(new AppExecutors(), database.searchDao()));
+
+        mPresenter = new ItemPresenter(mItemFragment, mRepository);
+
+        searchOnQuery();
+        searchOnSearch();
+    }
+
+    private void initializeSearchFragment() {
         mItemFragment = (ItemFragment) getSupportFragmentManager().findFragmentById(R.id.search_container);
         if (mItemFragment == null) {
             mItemFragment = ItemFragment.newInstance();
         }
-
-        mPresenter = new ItemPresenter(mItemFragment, new ItemList(new PoolThreadExecutor(), new MainThread()));
-        initializeSearch();
     }
 
-    private void initializeSearch() {
-        searchView.setVoiceSearch(false);
-        searchView.setCursorDrawable(R.drawable.custom_cursor);
-        searchView.setEllipsize(true);
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                mPresenter.queryTextSubmit(query);
-                Snackbar.make(coordinatorLayout, "Query: " + query, Snackbar.LENGTH_LONG).show();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                mPresenter.queryTextSubmit(newText);
-                return Boolean.TRUE;
-            }
-        });
-
+    private void searchOnSearch() {
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
                 disableToolbarScrolling();
-                callFragmentCommit();
-                searchView.setSuggestions(mPresenter.getStrings());
+                addFragmentInActivity();
+                mPresenter.setLast(searchCallback);
             }
 
             @Override
@@ -92,6 +83,23 @@ public class ItemActivity extends BaseActivity {
                         .remove(mItemFragment).commit();
             }
 
+        });
+    }
+
+    private void searchOnQuery() {
+        searchView.setHint(getString(R.string.search));
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mPresenter.queryTextSubmit(query);
+                return Boolean.FALSE;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mPresenter.queryTextChange(newText);
+                return Boolean.FALSE;
+            }
         });
     }
 
@@ -122,10 +130,24 @@ public class ItemActivity extends BaseActivity {
         params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
     }
 
-    private void callFragmentCommit() {
+    private void addFragmentInActivity() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                 .replace(R.id.search_container, mItemFragment).commit();
     }
+
+    private SearchCallback searchCallback = new SearchCallback() {
+        @Override
+        public void lastSearches(String[] search) {
+            searchView.setSuggestions(search);
+        }
+    };
+
+    public interface SearchCallback {
+
+        void lastSearches(String[] search);
+
+    }
+
 }

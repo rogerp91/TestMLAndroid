@@ -6,6 +6,6 @@ public interface SearchCallback {
 
     void onSuccess(Result result);
 
-    void onErrorLogin(Exception e);
+    void onError(Exception e);
 
 }

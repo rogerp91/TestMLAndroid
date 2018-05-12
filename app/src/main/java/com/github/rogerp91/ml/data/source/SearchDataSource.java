@@ -8,11 +8,12 @@ public interface SearchDataSource {
 
     interface GetSearchCallback {
 
-        void onTaskLoaded(Search search);
+        void onSearchLoaded(String[] searchs);
 
         void onDataNotAvailable();
     }
 
     void getSearch(@NonNull GetSearchCallback callback);
 
+    void saveSearch(@NonNull Search search);
 }

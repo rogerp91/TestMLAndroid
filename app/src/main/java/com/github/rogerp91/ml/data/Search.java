@@ -5,27 +5,24 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-@Entity(tableName = "search", indices = {@Index(value = {"title"}, unique = true)})
+@Entity(tableName = "search")
 public class Search {
 
+    @NonNull
     @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "_id")
-    private String mId;
-
-    @Nullable
     @ColumnInfo(name = "title")
-    private String mTitle;
+    private String title;
 
-    @NonNull
-    public String getmId() {
-        return mId;
+    public Search(String title) {
+        this.title = title;
     }
 
-    @Nullable
-    public String getmTitle() {
-        return mTitle;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

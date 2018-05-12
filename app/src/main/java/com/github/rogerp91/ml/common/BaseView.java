@@ -8,4 +8,5 @@ public interface BaseView<T> {
 
     Context getContextApp();
 
+    void showMessage(String message);
 }

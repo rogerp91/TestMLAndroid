@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.rogerp91.ml.R;
 import com.github.rogerp91.ml.common.BaseFragment;
@@ -46,5 +47,15 @@ public class ItemFragment extends BaseFragment implements ItemContract.View {
     @Override
     public Context getContextApp() {
         return getActivity();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getContextApp(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean isActive() {
+        return isAdded();
     }
 }
