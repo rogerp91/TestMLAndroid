@@ -15,4 +15,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MaterialSearchStyle">
+        <item name="searchBackground">@android:color/white</item>
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search</item>
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close</item>
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back</item>
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+    </style>
+
 </resources>

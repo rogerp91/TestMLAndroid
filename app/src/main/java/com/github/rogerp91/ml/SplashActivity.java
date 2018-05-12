@@ -7,11 +7,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.github.rogerp91.ml.category.CategoryActivity;
 import com.github.rogerp91.ml.common.BaseActivity;
+import com.github.rogerp91.ml.item.ItemActivity;
+import com.github.rogerp91.ml.util.Const;
+import com.github.rogerp91.ml.util.Prefs;
 
 import butterknife.BindView;
 
+import static com.github.rogerp91.ml.util.Const.Splash.MILLIS;
 import static java.lang.Thread.sleep;
 
 public class SplashActivity extends BaseActivity {
@@ -28,9 +31,14 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade);
-        mImageIso.startAnimation(animation);
-        initialize();
+        if (!Prefs.getBoolean(Const.Splash.PREF_SHOW_SPLASH)) {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade);
+            mImageIso.startAnimation(animation);
+            initialize();
+        } else {
+            startActivity(new Intent(SplashActivity.this, ItemActivity.class));
+            finish();
+        }
     }
 
     /**
@@ -39,14 +47,15 @@ public class SplashActivity extends BaseActivity {
     private void initialize() {
         Thread thread = new Thread(() -> {
             try {
-                sleep(2000);
+                sleep(MILLIS);
             } catch (InterruptedException e) {
                 Log.e(TAG, e.getMessage());
             } finally {
-                startActivity(new Intent(SplashActivity.this, CategoryActivity.class));
+                startActivity(new Intent(SplashActivity.this, ItemActivity.class));
                 finish();
             }
         });
         thread.start();
+        Prefs.putBoolean(Const.Splash.PREF_SHOW_SPLASH, Boolean.TRUE);
     }
 }

@@ -1,5 +1,6 @@
 package com.github.rogerp91.ml.common;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -24,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void setToolbar(@NonNull Toolbar toolbar) {
         if (toolbar != null) {
             mToolbar = toolbar;
+            mToolbar.setTitleTextColor(Color.BLACK);
             mToolbar.setTitle("");
             mToolbar.setSubtitle("");
             setSupportActionBar(toolbar);
