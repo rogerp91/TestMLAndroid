@@ -42,7 +42,11 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
 
     @Override
     public void queryTextSubmit(String query) {
-        if (query.isEmpty() || query.length() < 2) {
+        if (query.isEmpty()) {
+            return;
+        }
+        if (query.length() < 2) {
+            mView.showMessage(mView.getContextActivity().getString(R.string.minimum_characters));
             return;
         }
         callSearch(query);

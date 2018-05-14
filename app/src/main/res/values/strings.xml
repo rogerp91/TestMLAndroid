@@ -29,5 +29,6 @@
     <string name="model">Modelo</string>
     <string name="item">Condición del ítem</string>
     <string name="unknown">Desconocido</string>
+    <string name="minimum_characters">Minino dos caracteres</string>
 
 </resources>
