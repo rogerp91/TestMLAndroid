@@ -106,8 +106,12 @@ public class DescriptionFragment extends BaseFragment implements BindFragment {
         if (product.getShipping() != null) {
             if (product.getShipping().getFreeMethods() != null) {
                 FreeMethod freeMethod = product.getShipping().getFreeMethods().get(0);
-                if (freeMethod.getRule().getFreeShippingFlag()) {
-                    free.setText(R.string.product_free);
+                if (freeMethod.getRule().getFreeShippingFlag() != null) {
+                    if (freeMethod.getRule().getFreeShippingFlag()) {
+                        free.setText(R.string.product_free);
+                    } else {
+                        free.setText(R.string.shipping_with_dues);
+                    }
                 } else {
                     free.setText(R.string.shipping_with_dues);
                 }
