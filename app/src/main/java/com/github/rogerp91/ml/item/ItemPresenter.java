@@ -42,7 +42,7 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
 
     @Override
     public void queryTextSubmit(String query) {
-        if (query.isEmpty() || query.length() < 3) {
+        if (query.isEmpty() || query.length() < 2) {
             return;
         }
         callSearch(query);
@@ -50,7 +50,7 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
 
     @Override
     public void queryTextChange(String query) {
-        if (query.isEmpty() || query.length() < 3) {
+        if (query.isEmpty() || query.length() < 2) {
             return;
         }
         callSearch(query);
