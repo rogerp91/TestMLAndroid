@@ -49,6 +49,10 @@ public class ItemActivity extends BaseActivity {
         setName(getResources().getString(R.string.app_name));
         initializeSearchFragment();
 
+        searchView.setVoiceSearch(false);
+        searchView.setCursorDrawable(R.drawable.custom_cursor);
+        searchView.setEllipsize(true);
+
         SearchDatabase database = SearchDatabase.getInstance(getApplicationContext());
         SearchDataSource mRepository = SearchRepository.getInstance(SearchLocalDataSource.getInstance(new AppExecutors(), database.searchDao()));
 
@@ -70,17 +74,14 @@ public class ItemActivity extends BaseActivity {
             @Override
             public void onSearchViewShown() {
                 disableToolbarScrolling();
-                addFragmentInActivity();
+                mPresenter.goToSearch(getSupportFragmentManager(), mItemFragment);
                 mPresenter.setLast(searchCallback);
             }
 
             @Override
             public void onSearchViewClosed() {
                 enableToolbarScrolling();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                        .remove(mItemFragment).commit();
+                mPresenter.becomingSearch(getSupportFragmentManager(), mItemFragment);
             }
 
         });
@@ -92,13 +93,13 @@ public class ItemActivity extends BaseActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mPresenter.queryTextSubmit(query);
-                return Boolean.FALSE;
+                return Boolean.TRUE;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                mPresenter.queryTextChange(newText);
-                return Boolean.FALSE;
+//                mPresenter.queryTextChange(newText);
+                return Boolean.TRUE;
             }
         });
     }
@@ -130,18 +131,8 @@ public class ItemActivity extends BaseActivity {
         params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
     }
 
-    private void addFragmentInActivity() {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.search_container, mItemFragment).commit();
-    }
-
-    private SearchCallback searchCallback = new SearchCallback() {
-        @Override
-        public void lastSearches(String[] search) {
-            searchView.setSuggestions(search);
-        }
+    private SearchCallback searchCallback = search -> {
+//            searchView.setSuggestions(search);
     };
 
     public interface SearchCallback {

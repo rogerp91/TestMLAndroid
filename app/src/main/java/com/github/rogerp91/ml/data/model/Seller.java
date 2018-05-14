@@ -1,66 +1,64 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import java.util.List;
+
+@Parcel
 public class Seller {
 
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("power_seller_status")
-    @Expose
-    private Object powerSellerStatus;
     @SerializedName("car_dealer")
-    @Expose
-    private Boolean carDealer;
+    public Boolean mCarDealer;
+    @SerializedName("id")
+    public Long mId;
+    @SerializedName("power_seller_status")
+    public String mPowerSellerStatus;
     @SerializedName("real_estate_agency")
-    @Expose
-    private Boolean realEstateAgency;
+    public Boolean mRealEstateAgency;
     @SerializedName("tags")
-    @Expose
-    private List<Object> tags = null;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Object getPowerSellerStatus() {
-        return powerSellerStatus;
-    }
-
-    public void setPowerSellerStatus(Object powerSellerStatus) {
-        this.powerSellerStatus = powerSellerStatus;
-    }
+    public List<String> mTags;
 
     public Boolean getCarDealer() {
-        return carDealer;
+        return mCarDealer;
     }
 
     public void setCarDealer(Boolean carDealer) {
-        this.carDealer = carDealer;
+        mCarDealer = carDealer;
+    }
+
+    public Long getId() {
+        return mId;
+    }
+
+    public void setId(Long id) {
+        mId = id;
+    }
+
+    public String getPowerSellerStatus() {
+        return mPowerSellerStatus;
+    }
+
+    public void setPowerSellerStatus(String powerSellerStatus) {
+        mPowerSellerStatus = powerSellerStatus;
     }
 
     public Boolean getRealEstateAgency() {
-        return realEstateAgency;
+        return mRealEstateAgency;
     }
 
     public void setRealEstateAgency(Boolean realEstateAgency) {
-        this.realEstateAgency = realEstateAgency;
+        mRealEstateAgency = realEstateAgency;
     }
 
-    public List<Object> getTags() {
-        return tags;
+    public List<String> getTags() {
+        return mTags;
     }
 
-    public void setTags(List<Object> tags) {
-        this.tags = tags;
+    public void setTags(List<String> tags) {
+        mTags = tags;
     }
 
 }

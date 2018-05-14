@@ -1,32 +1,29 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Sort {
 
     @SerializedName("id")
-    @Expose
-    private String id;
+    private String mId;
     @SerializedName("name")
-    @Expose
-    private String name;
+    private String mName;
 
     public String getId() {
-        return id;
+        return mId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
 
 }

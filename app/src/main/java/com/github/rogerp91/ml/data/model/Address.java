@@ -1,54 +1,51 @@
-
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Address {
 
-    @SerializedName("state_id")
-    @Expose
-    private String stateId;
-    @SerializedName("state_name")
-    @Expose
-    private String stateName;
     @SerializedName("city_id")
-    @Expose
-    private String cityId;
+    public String mCityId;
     @SerializedName("city_name")
-    @Expose
-    private String cityName;
-
-    public String getStateId() {
-        return stateId;
-    }
-
-    public void setStateId(String stateId) {
-        this.stateId = stateId;
-    }
-
-    public String getStateName() {
-        return stateName;
-    }
-
-    public void setStateName(String stateName) {
-        this.stateName = stateName;
-    }
+    public String mCityName;
+    @SerializedName("state_id")
+    public String mStateId;
+    @SerializedName("state_name")
+    public String mStateName;
 
     public String getCityId() {
-        return cityId;
+        return mCityId;
     }
 
     public void setCityId(String cityId) {
-        this.cityId = cityId;
+        mCityId = cityId;
     }
 
     public String getCityName() {
-        return cityName;
+        return mCityName;
     }
 
     public void setCityName(String cityName) {
-        this.cityName = cityName;
+        mCityName = cityName;
+    }
+
+    public String getStateId() {
+        return mStateId;
+    }
+
+    public void setStateId(String stateId) {
+        mStateId = stateId;
+    }
+
+    public String getStateName() {
+        return mStateName;
+    }
+
+    public void setStateName(String stateName) {
+        mStateName = stateName;
     }
 
 }

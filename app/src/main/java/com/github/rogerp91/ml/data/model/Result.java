@@ -1,308 +1,273 @@
-
 package com.github.rogerp91.ml.data.model;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import java.util.List;
+
+@Parcel
 public class Result {
 
-    @SerializedName("id")
-    @Expose
-    private String id;
-    @SerializedName("site_id")
-    @Expose
-    private String siteId;
-    @SerializedName("title")
-    @Expose
-    private String title;
-    @SerializedName("seller")
-    @Expose
-    private Seller seller;
-    @SerializedName("price")
-    @Expose
-    private Integer price;
-    @SerializedName("currency_id")
-    @Expose
-    private String currencyId;
-    @SerializedName("available_quantity")
-    @Expose
-    private Integer availableQuantity;
-    @SerializedName("sold_quantity")
-    @Expose
-    private Integer soldQuantity;
-    @SerializedName("buying_mode")
-    @Expose
-    private String buyingMode;
-    @SerializedName("listing_type_id")
-    @Expose
-    private String listingTypeId;
-    @SerializedName("stop_time")
-    @Expose
-    private String stopTime;
-    @SerializedName("condition")
-    @Expose
-    private String condition;
-    @SerializedName("permalink")
-    @Expose
-    private String permalink;
-    @SerializedName("thumbnail")
-    @Expose
-    private String thumbnail;
     @SerializedName("accepts_mercadopago")
-    @Expose
-    private Boolean acceptsMercadopago;
-    @SerializedName("installments")
-    @Expose
-    private Installments installments;
+    public Boolean mAcceptsMercadopago;
     @SerializedName("address")
-    @Expose
-    private Address address;
-    @SerializedName("shipping")
-    @Expose
-    private Shipping shipping;
-    @SerializedName("seller_address")
-    @Expose
-    private SellerAddress sellerAddress;
+    public Address mAddress;
     @SerializedName("attributes")
-    @Expose
-    private List<Attribute> attributes = null;
-    @SerializedName("differential_pricing")
-    @Expose
-    private DifferentialPricing differentialPricing;
-    @SerializedName("original_price")
-    @Expose
-    private Object originalPrice;
-    @SerializedName("category_id")
-    @Expose
-    private String categoryId;
-    @SerializedName("official_store_id")
-    @Expose
-    private Object officialStoreId;
+    public List<Attribute> mAttributes;
+    @SerializedName("available_quantity")
+    public Long mAvailableQuantity;
+    @SerializedName("buying_mode")
+    public String mBuyingMode;
     @SerializedName("catalog_product_id")
-    @Expose
-    private String catalogProductId;
+    public String mCatalogProductId;
+    @SerializedName("category_id")
+    public String mCategoryId;
+    @SerializedName("condition")
+    public String mCondition;
+    @SerializedName("currency_id")
+    public String mCurrencyId;
+    @SerializedName("id")
+    public String mId;
+    @SerializedName("installments")
+    public Installments mInstallments;
+    @SerializedName("listing_type_id")
+    public String mListingTypeId;
+    @SerializedName("official_store_id")
+    public Long mOfficialStoreId;
+//    @SerializedName("original_price")
+//    public Object mOriginalPrice;
+    @SerializedName("permalink")
+    public String mPermalink;
+    @SerializedName("price")
+    public Double mPrice;
     @SerializedName("reviews")
-    @Expose
-    private Reviews reviews;
+    public Reviews mReviews;
+    @SerializedName("seller")
+    public Seller mSeller;
+    @SerializedName("seller_address")
+    public SellerAddress mSellerAddress;
+    @SerializedName("shipping")
+    public Shipping mShipping;
+    @SerializedName("site_id")
+    public String mSiteId;
+    @SerializedName("sold_quantity")
+    public Long mSoldQuantity;
+    @SerializedName("stop_time")
+    public String mStopTime;
     @SerializedName("tags")
-    @Expose
-    private List<String> tags = null;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSiteId() {
-        return siteId;
-    }
-
-    public void setSiteId(String siteId) {
-        this.siteId = siteId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public String getCurrencyId() {
-        return currencyId;
-    }
-
-    public void setCurrencyId(String currencyId) {
-        this.currencyId = currencyId;
-    }
-
-    public Integer getAvailableQuantity() {
-        return availableQuantity;
-    }
-
-    public void setAvailableQuantity(Integer availableQuantity) {
-        this.availableQuantity = availableQuantity;
-    }
-
-    public Integer getSoldQuantity() {
-        return soldQuantity;
-    }
-
-    public void setSoldQuantity(Integer soldQuantity) {
-        this.soldQuantity = soldQuantity;
-    }
-
-    public String getBuyingMode() {
-        return buyingMode;
-    }
-
-    public void setBuyingMode(String buyingMode) {
-        this.buyingMode = buyingMode;
-    }
-
-    public String getListingTypeId() {
-        return listingTypeId;
-    }
-
-    public void setListingTypeId(String listingTypeId) {
-        this.listingTypeId = listingTypeId;
-    }
-
-    public String getStopTime() {
-        return stopTime;
-    }
-
-    public void setStopTime(String stopTime) {
-        this.stopTime = stopTime;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getPermalink() {
-        return permalink;
-    }
-
-    public void setPermalink(String permalink) {
-        this.permalink = permalink;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
+    public List<String> mTags;
+    @SerializedName("thumbnail")
+    public String mThumbnail;
+    @SerializedName("title")
+    public String mTitle;
 
     public Boolean getAcceptsMercadopago() {
-        return acceptsMercadopago;
+        return mAcceptsMercadopago;
     }
 
     public void setAcceptsMercadopago(Boolean acceptsMercadopago) {
-        this.acceptsMercadopago = acceptsMercadopago;
-    }
-
-    public Installments getInstallments() {
-        return installments;
-    }
-
-    public void setInstallments(Installments installments) {
-        this.installments = installments;
+        mAcceptsMercadopago = acceptsMercadopago;
     }
 
     public Address getAddress() {
-        return address;
+        return mAddress;
     }
 
     public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Shipping getShipping() {
-        return shipping;
-    }
-
-    public void setShipping(Shipping shipping) {
-        this.shipping = shipping;
-    }
-
-    public SellerAddress getSellerAddress() {
-        return sellerAddress;
-    }
-
-    public void setSellerAddress(SellerAddress sellerAddress) {
-        this.sellerAddress = sellerAddress;
+        mAddress = address;
     }
 
     public List<Attribute> getAttributes() {
-        return attributes;
+        return mAttributes;
     }
 
     public void setAttributes(List<Attribute> attributes) {
-        this.attributes = attributes;
+        mAttributes = attributes;
     }
 
-    public DifferentialPricing getDifferentialPricing() {
-        return differentialPricing;
+    public Long getAvailableQuantity() {
+        return mAvailableQuantity;
     }
 
-    public void setDifferentialPricing(DifferentialPricing differentialPricing) {
-        this.differentialPricing = differentialPricing;
+    public void setAvailableQuantity(Long availableQuantity) {
+        mAvailableQuantity = availableQuantity;
     }
 
-    public Object getOriginalPrice() {
-        return originalPrice;
+    public String getBuyingMode() {
+        return mBuyingMode;
     }
 
-    public void setOriginalPrice(Object originalPrice) {
-        this.originalPrice = originalPrice;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Object getOfficialStoreId() {
-        return officialStoreId;
-    }
-
-    public void setOfficialStoreId(Object officialStoreId) {
-        this.officialStoreId = officialStoreId;
+    public void setBuyingMode(String buyingMode) {
+        mBuyingMode = buyingMode;
     }
 
     public String getCatalogProductId() {
-        return catalogProductId;
+        return mCatalogProductId;
     }
 
     public void setCatalogProductId(String catalogProductId) {
-        this.catalogProductId = catalogProductId;
+        mCatalogProductId = catalogProductId;
+    }
+
+    public String getCategoryId() {
+        return mCategoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        mCategoryId = categoryId;
+    }
+
+    public String getCondition() {
+        return mCondition;
+    }
+
+    public void setCondition(String condition) {
+        mCondition = condition;
+    }
+
+    public String getCurrencyId() {
+        return mCurrencyId;
+    }
+
+    public void setCurrencyId(String currencyId) {
+        mCurrencyId = currencyId;
+    }
+
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
+    }
+
+    public Installments getInstallments() {
+        return mInstallments;
+    }
+
+    public void setInstallments(Installments installments) {
+        mInstallments = installments;
+    }
+
+    public String getListingTypeId() {
+        return mListingTypeId;
+    }
+
+    public void setListingTypeId(String listingTypeId) {
+        mListingTypeId = listingTypeId;
+    }
+
+    public Long getOfficialStoreId() {
+        return mOfficialStoreId;
+    }
+
+    public void setOfficialStoreId(Long officialStoreId) {
+        mOfficialStoreId = officialStoreId;
+    }
+
+//    public Object getOriginalPrice() {
+//        return mOriginalPrice;
+//    }
+//
+//    public void setOriginalPrice(Object originalPrice) {
+//        mOriginalPrice = originalPrice;
+//    }
+
+    public String getPermalink() {
+        return mPermalink;
+    }
+
+    public void setPermalink(String permalink) {
+        mPermalink = permalink;
+    }
+
+    public Double getPrice() {
+        return mPrice;
+    }
+
+    public void setPrice(Double price) {
+        mPrice = price;
     }
 
     public Reviews getReviews() {
-        return reviews;
+        return mReviews;
     }
 
     public void setReviews(Reviews reviews) {
-        this.reviews = reviews;
+        mReviews = reviews;
+    }
+
+    public Seller getSeller() {
+        return mSeller;
+    }
+
+    public void setSeller(Seller seller) {
+        mSeller = seller;
+    }
+
+    public SellerAddress getSellerAddress() {
+        return mSellerAddress;
+    }
+
+    public void setSellerAddress(SellerAddress sellerAddress) {
+        mSellerAddress = sellerAddress;
+    }
+
+    public Shipping getShipping() {
+        return mShipping;
+    }
+
+    public void setShipping(Shipping shipping) {
+        mShipping = shipping;
+    }
+
+    public String getSiteId() {
+        return mSiteId;
+    }
+
+    public void setSiteId(String siteId) {
+        mSiteId = siteId;
+    }
+
+    public Long getSoldQuantity() {
+        return mSoldQuantity;
+    }
+
+    public void setSoldQuantity(Long soldQuantity) {
+        mSoldQuantity = soldQuantity;
+    }
+
+    public String getStopTime() {
+        return mStopTime;
+    }
+
+    public void setStopTime(String stopTime) {
+        mStopTime = stopTime;
     }
 
     public List<String> getTags() {
-        return tags;
+        return mTags;
     }
 
     public void setTags(List<String> tags) {
-        this.tags = tags;
+        mTags = tags;
+    }
+
+    public String getThumbnail() {
+        return mThumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        mThumbnail = thumbnail;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
 }

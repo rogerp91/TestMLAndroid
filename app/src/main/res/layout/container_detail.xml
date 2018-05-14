@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/section_picture"
+        class="com.github.rogerp91.ml.detail.fragment.PictureFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        tools:layout="@layout/fragment_picture" />
+
+    <fragment
+        android:id="@+id/section_description"
+        class="com.github.rogerp91.ml.detail.fragment.DescriptionFragment"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        tools:layout="@layout/fragment_description" />
+
+    <fragment
+        android:id="@+id/section_seller"
+        class="com.github.rogerp91.ml.detail.fragment.SellerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        tools:layout="@layout/fragment_seller" />
+
+    <fragment
+        android:id="@+id/section_other"
+        class="com.github.rogerp91.ml.detail.fragment.OtherProductFragment"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        tools:layout="@layout/fragment_other_product" />
+
+    <fragment
+        android:id="@+id/section_characteristics"
+        class="com.github.rogerp91.ml.detail.fragment.CharacteristicsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        tools:layout="@layout/fragment_characteristics" />
+
+</LinearLayout>

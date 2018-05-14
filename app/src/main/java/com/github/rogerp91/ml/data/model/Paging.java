@@ -1,54 +1,49 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Paging {
 
-    @SerializedName("total")
-    @Expose
-    private Integer total;
-    @SerializedName("offset")
-    @Expose
-    private Integer offset;
     @SerializedName("limit")
-    @Expose
-    private Integer limit;
+    private Long mLimit;
+    @SerializedName("offset")
+    private Long mOffset;
     @SerializedName("primary_results")
-    @Expose
-    private Integer primaryResults;
+    private Long mPrimaryResults;
+    @SerializedName("total")
+    private Long mTotal;
 
-    public Integer getTotal() {
-        return total;
+    public Long getLimit() {
+        return mLimit;
     }
 
-    public void setTotal(Integer total) {
-        this.total = total;
+    public void setLimit(Long limit) {
+        mLimit = limit;
     }
 
-    public Integer getOffset() {
-        return offset;
+    public Long getOffset() {
+        return mOffset;
     }
 
-    public void setOffset(Integer offset) {
-        this.offset = offset;
+    public void setOffset(Long offset) {
+        mOffset = offset;
     }
 
-    public Integer getLimit() {
-        return limit;
+    public Long getPrimaryResults() {
+        return mPrimaryResults;
     }
 
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+    public void setPrimaryResults(Long primaryResults) {
+        mPrimaryResults = primaryResults;
     }
 
-    public Integer getPrimaryResults() {
-        return primaryResults;
+    public Long getTotal() {
+        return mTotal;
     }
 
-    public void setPrimaryResults(Integer primaryResults) {
-        this.primaryResults = primaryResults;
+    public void setTotal(Long total) {
+        mTotal = total;
     }
 
 }

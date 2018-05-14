@@ -13,7 +13,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
 
-    private BaseActivity mBaseActivity;
+    protected BaseActivity mBaseActivity;
     private Unbinder mUnbinder;
 
     @Override

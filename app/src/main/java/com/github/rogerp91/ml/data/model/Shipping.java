@@ -1,55 +1,65 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import java.util.List;
+
+@Parcel
 public class Shipping {
 
     @SerializedName("free_shipping")
-    @Expose
-    private Boolean freeShipping;
-    @SerializedName("mode")
-    @Expose
-    private String mode;
-    @SerializedName("tags")
-    @Expose
-    private List<Object> tags = null;
+    public Boolean mFreeShipping;
     @SerializedName("logistic_type")
-    @Expose
-    private String logisticType;
+    public String mLogisticType;
+    @SerializedName("mode")
+    public String mMode;
+    @SerializedName("tags")
+    public List<String> mTags;
+
+    @SerializedName("free_methods")
+    public List<FreeMethod> freeMethods = null;
+
+    public List<FreeMethod> getFreeMethods() {
+        return freeMethods;
+    }
+
+    public void setFreeMethods(List<FreeMethod> freeMethods) {
+        this.freeMethods = freeMethods;
+    }
 
     public Boolean getFreeShipping() {
-        return freeShipping;
+        return mFreeShipping;
     }
 
     public void setFreeShipping(Boolean freeShipping) {
-        this.freeShipping = freeShipping;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
-
-    public List<Object> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Object> tags) {
-        this.tags = tags;
+        mFreeShipping = freeShipping;
     }
 
     public String getLogisticType() {
-        return logisticType;
+        return mLogisticType;
     }
 
     public void setLogisticType(String logisticType) {
-        this.logisticType = logisticType;
+        mLogisticType = logisticType;
+    }
+
+    public String getMode() {
+        return mMode;
+    }
+
+    public void setMode(String mode) {
+        mMode = mode;
+    }
+
+    public List<String> getTags() {
+        return mTags;
+    }
+
+    public void setTags(List<String> tags) {
+        mTags = tags;
     }
 
 }

@@ -1,98 +1,82 @@
-
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Attribute {
 
     @SerializedName("attribute_group_id")
-    @Expose
-    private String attributeGroupId;
+    public String mAttributeGroupId;
     @SerializedName("attribute_group_name")
-    @Expose
-    private String attributeGroupName;
+    public String mAttributeGroupName;
     @SerializedName("id")
-    @Expose
-    private String id;
+    public String mId;
     @SerializedName("name")
-    @Expose
-    private String name;
+    public String mName;
     @SerializedName("source")
-    @Expose
-    private Integer source;
+    public Long mSource;
     @SerializedName("value_id")
-    @Expose
-    private String valueId;
+    public String mValueId;
     @SerializedName("value_name")
-    @Expose
-    private String valueName;
-    @SerializedName("value_struct")
-    @Expose
-    private Object valueStruct;
+    public String mValueName;
 
     public String getAttributeGroupId() {
-        return attributeGroupId;
+        return mAttributeGroupId;
     }
 
     public void setAttributeGroupId(String attributeGroupId) {
-        this.attributeGroupId = attributeGroupId;
+        mAttributeGroupId = attributeGroupId;
     }
 
     public String getAttributeGroupName() {
-        return attributeGroupName;
+        return mAttributeGroupName;
     }
 
     public void setAttributeGroupName(String attributeGroupName) {
-        this.attributeGroupName = attributeGroupName;
+        mAttributeGroupName = attributeGroupName;
     }
 
     public String getId() {
-        return id;
+        return mId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
 
-    public Integer getSource() {
-        return source;
+    public Long getSource() {
+        return mSource;
     }
 
-    public void setSource(Integer source) {
-        this.source = source;
+    public void setSource(Long source) {
+        mSource = source;
     }
 
     public String getValueId() {
-        return valueId;
+        return mValueId;
     }
 
     public void setValueId(String valueId) {
-        this.valueId = valueId;
+        mValueId = valueId;
     }
 
     public String getValueName() {
-        return valueName;
+        return mValueName;
     }
 
     public void setValueName(String valueName) {
-        this.valueName = valueName;
+        mValueName = valueName;
     }
 
-    public Object getValueStruct() {
-        return valueStruct;
-    }
-
-    public void setValueStruct(Object valueStruct) {
-        this.valueStruct = valueStruct;
-    }
 
 }

@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ML</string>
+    <string name="app_name">Test ML</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">Buscar</string>
     <string name="time_out_error">Verificar su conexión a internet e intente de nuevo</string>
     <string name="io_error">Verificar su conexión a internet e intente de nuevo</string>
     <string name="error_ocurred">Ocurrió un error desconocido:</string>
+    <string name="verify_network">Verifique la conexión a internet</string>
+    <string name="not_result">No se encontraron resultados</string>
+    <string name="more">Ver más de </string>
+    <string name="product">Producto</string>
+    <string name="photo">%d Fotos</string>
+    <string name="buy">Comprar</string>
+    <string name="add_car">Agregar al carro</string>
+    <string name="favorite">Favorito</string>
+    <string name="shared">Compartir</string>
+    <string name="product_free">Productos con envío gratis</string>
+    <string name="shipping_with_dues">El envío se le aplicarán cuotas</string>
+    <string name="quantity_available">Cantidad no disponible</string>
+    <string name="produc_stock">productos en stock</string>
+    <string name="warranty">Garantía</string>
+    <string name="location">Ubicación</string>
+    <string name="send_free">Envío gratis</string>
+    <string name="characteristics">Características</string>
+    <string name="info_seller">Información del Vendedor</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="item">Condición del ítem</string>
+    <string name="unknown">Desconocido</string>
 
 </resources>

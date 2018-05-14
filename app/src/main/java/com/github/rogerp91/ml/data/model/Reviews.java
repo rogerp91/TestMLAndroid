@@ -1,32 +1,32 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Reviews {
 
     @SerializedName("rating_average")
-    @Expose
-    private Integer ratingAverage;
+    public Double mRatingAverage;
     @SerializedName("total")
-    @Expose
-    private Integer total;
+    public int mTotal;
 
-    public Integer getRatingAverage() {
-        return ratingAverage;
+    public Double getRatingAverage() {
+        return mRatingAverage;
     }
 
-    public void setRatingAverage(Integer ratingAverage) {
-        this.ratingAverage = ratingAverage;
+    public void setRatingAverage(Double ratingAverage) {
+        mRatingAverage = ratingAverage;
     }
 
-    public Integer getTotal() {
-        return total;
+    public int getTotal() {
+        return mTotal;
     }
 
-    public void setTotal(Integer total) {
-        this.total = total;
+    public void setTotal(int total) {
+        mTotal = total;
     }
 
 }

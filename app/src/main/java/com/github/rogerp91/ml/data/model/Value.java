@@ -1,43 +1,51 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class Value {
 
     @SerializedName("id")
-    @Expose
-    private String id;
+    private String mId;
     @SerializedName("name")
-    @Expose
-    private String name;
+    private String mName;
+    @SerializedName("path_from_root")
+    private List<PathFromRoot> mPathFromRoot;
     @SerializedName("results")
-    @Expose
-    private Integer results;
+    private Long mResults;
 
     public String getId() {
-        return id;
+        return mId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
 
-    public Integer getResults() {
-        return results;
+    public List<PathFromRoot> getPathFromRoot() {
+        return mPathFromRoot;
     }
 
-    public void setResults(Integer results) {
-        this.results = results;
+    public void setPathFromRoot(List<PathFromRoot> pathFromRoot) {
+        mPathFromRoot = pathFromRoot;
+    }
+
+    public Long getResults() {
+        return mResults;
+    }
+
+    public void setResults(Long results) {
+        mResults = results;
     }
 
 }

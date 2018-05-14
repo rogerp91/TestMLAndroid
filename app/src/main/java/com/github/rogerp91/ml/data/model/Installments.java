@@ -1,54 +1,52 @@
 
 package com.github.rogerp91.ml.data.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Installments {
 
-    @SerializedName("quantity")
-    @Expose
-    private Integer quantity;
     @SerializedName("amount")
-    @Expose
-    private Double amount;
-    @SerializedName("rate")
-    @Expose
-    private Integer rate;
+    public Double mAmount;
     @SerializedName("currency_id")
-    @Expose
-    private String currencyId;
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+    public String mCurrencyId;
+    @SerializedName("quantity")
+    public Long mQuantity;
+    @SerializedName("rate")
+    public Double mRate;
 
     public Double getAmount() {
-        return amount;
+        return mAmount;
     }
 
     public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Integer getRate() {
-        return rate;
-    }
-
-    public void setRate(Integer rate) {
-        this.rate = rate;
+        mAmount = amount;
     }
 
     public String getCurrencyId() {
-        return currencyId;
+        return mCurrencyId;
     }
 
     public void setCurrencyId(String currencyId) {
-        this.currencyId = currencyId;
+        mCurrencyId = currencyId;
+    }
+
+    public Long getQuantity() {
+        return mQuantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        mQuantity = quantity;
+    }
+
+    public Double getRate() {
+        return mRate;
+    }
+
+    public void setRate(Double rate) {
+        mRate = rate;
     }
 
 }

@@ -1,14 +1,20 @@
 package com.github.rogerp91.ml.item;
 
+import android.support.v4.app.FragmentManager;
+
 import com.github.rogerp91.ml.R;
 import com.github.rogerp91.ml.common.SearchCallback;
 import com.github.rogerp91.ml.data.Search;
+import com.github.rogerp91.ml.data.model.QuerySearch;
 import com.github.rogerp91.ml.data.model.Result;
 import com.github.rogerp91.ml.data.source.SearchDataSource;
-import com.github.rogerp91.ml.services.SearchItem;
+import com.github.rogerp91.ml.services.EmptyException;
+import com.github.rogerp91.ml.services.interactor.SearchInteractor;
+import com.github.rogerp91.ml.util.Network;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.List;
 
 public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
 
@@ -24,7 +30,7 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
         this.mView = mView;
         this.mRepository = mRepository;
 
-        this.mRouter = new ItemRouter(this.mView.getContextApp());
+        this.mRouter = new ItemRouter(this.mView);
         this.mView.setPresenter(this);
     }
 
@@ -36,29 +42,18 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
 
     @Override
     public void queryTextSubmit(String query) {
-        if (query.isEmpty()) {
+        if (query.isEmpty() || query.length() < 3) {
             return;
         }
-        if (query.length() < 3) {
-            return;
-        }
-        mQuery = query;
-        SearchItem.with(this).site("MLA").query(query).pag("1").call();
+        callSearch(query);
     }
 
     @Override
     public void queryTextChange(String query) {
-        if (query.isEmpty()) {
+        if (query.isEmpty() || query.length() < 3) {
             return;
         }
-        if (query.length() < 2) {
-            return;
-        }
-        if (query.length() < 3) {
-            return;
-        }
-        mQuery = query;
-        SearchItem.with(this).site("MLA").query(query).pag("1").call();
+        callSearch(query);
     }
 
     @Override
@@ -86,11 +81,13 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
     }
 
     @Override
-    public void onSuccess(Result result) {
+    public void onSuccess(QuerySearch querySearch) {
         if (!mView.isActive()) {
             return;
         }
         mRepository.saveSearch(new Search(mQuery));
+        mView.hideProgress();
+        mView.showSearchedResult(querySearch.getResults());
     }
 
     @Override
@@ -98,14 +95,62 @@ public class ItemPresenter implements ItemContract.Presenter, SearchCallback {
         if (!mView.isActive()) {
             return;
         }
+
+        mView.hideSoftKeyboard();
+        mView.hideProgress();
         if (e instanceof SocketTimeoutException) {
-            mView.showMessage(mView.getContextApp().getString(R.string.time_out_error));
+            mView.showMessage(getString(R.string.time_out_error));
         } else {
             if (e instanceof IOException) {
-                mView.showMessage(mView.getContextApp().getString(R.string.io_error));
+                mView.showMessage(getString(R.string.io_error));
             } else {
-                mView.showMessage(mView.getContextApp().getString(R.string.error_ocurred) + e.getMessage());
+                if (e instanceof EmptyException) {
+                    mView.showMessage(getString(R.string.not_result));
+                } else {
+                    mView.showMessage(getString(R.string.error_ocurred) + e.getMessage());
+                }
             }
         }
+    }
+
+    @Override
+    public void goToDetail(Result result) {
+        mRouter.goToDetail(result);
+    }
+
+    @Override
+    public void goToDetail(String idProduct) {
+        mRouter.goToDetail(idProduct);
+    }
+
+    @Override
+    public void goToDetail(Result result, List<Result> results) {
+        mRouter.goToDetail(result, results);
+    }
+
+    private void callSearch(String query) {
+        if (!Network.isNetworkConnected()) {
+            mView.showMessage(getString(R.string.verify_network));
+            return;
+        }
+        mQuery = query;
+
+        mView.hideProgress();
+        mView.showProgress();
+        SearchInteractor.with(this).site("MLA").query(query).pag("1").call();
+    }
+
+    @Override
+    public void goToSearch(FragmentManager supportFragmentManager, ItemFragment mItemFragment) {
+        mRouter.goToSearch(supportFragmentManager, mItemFragment);
+    }
+
+    @Override
+    public void becomingSearch(FragmentManager supportFragmentManager, ItemFragment mItemFragment) {
+        mRouter.becomingSearch(supportFragmentManager, mItemFragment);
+    }
+
+    private String getString(int res) {
+        return mView.getContextActivity().getString(res);
     }
 }

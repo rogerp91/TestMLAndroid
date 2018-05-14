@@ -1,4 +1,4 @@
-package com.github.rogerp91.ml;
+package com.github.rogerp91.ml.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.github.rogerp91.ml.R;
 import com.github.rogerp91.ml.common.BaseActivity;
 import com.github.rogerp91.ml.item.ItemActivity;
 import com.github.rogerp91.ml.util.Const;

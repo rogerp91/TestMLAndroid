@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <include layout="@layout/progress" />
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carousel_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:indicatorVisibility="gone"
+        app:slideInterval="5000" />
+
+    <TextView
+        android:id="@+id/count_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginStart="22dp"
+        android:background="@drawable/rounded_border_textview"
+        android:padding="5dp"
+        android:text="1 Fotos"
+        android:visibility="gone" />
+
+</RelativeLayout>

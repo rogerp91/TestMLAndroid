@@ -4,5 +4,8 @@
     <color name="colorPrimary">#FFDB15</color>
     <color name="colorPrimaryDark">#E6FFDB15</color>
     <color name="colorAccent">#FFEA78</color>
-
+    <color name="blue">#3483fa</color>
+    <color name="separator_line">#ECECEC</color>
+    <color name="title">#222222</color>
+    <color name="subtitle">#999999</color>
 </resources>
