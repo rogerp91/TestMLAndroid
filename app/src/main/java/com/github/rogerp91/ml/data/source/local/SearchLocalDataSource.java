@@ -3,7 +3,7 @@ package com.github.rogerp91.ml.data.source.local;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.github.rogerp91.ml.data.Search;
+import com.github.rogerp91.ml.data.model.Search;
 import com.github.rogerp91.ml.data.source.SearchDataSource;
 import com.github.rogerp91.ml.util.AppExecutors;
 
@@ -51,8 +51,26 @@ public class SearchLocalDataSource implements SearchDataSource {
     @Override
     public void saveSearch(@NonNull Search search) {
         Runnable runnable = () -> {
+            Log.d("BlankFragment", search.getTitle());
             mSearchDao.insert(search);
         };
+        mAppExecutors.diskIO().execute(runnable);
+    }
+
+    @Override
+    public void getSearchLike(String query, @NonNull GetSearchLikeCallback callback) {
+        Runnable runnable = () -> {
+            final String[] search = mSearchDao.getSearchLike(query);
+            Log.d("TAG", Integer.toString(search.length));
+            mAppExecutors.mainThread().execute(() -> {
+                if (search.length == 0) {
+                    callback.onDataNotAvailable();
+                } else {
+                    callback.onSearchLoaded(search);
+                }
+            });
+        };
+
         mAppExecutors.diskIO().execute(runnable);
     }
 }

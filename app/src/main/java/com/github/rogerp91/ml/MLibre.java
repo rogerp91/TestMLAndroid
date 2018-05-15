@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.github.rogerp91.ml.util.Prefs;
 
+/**
+ * Usar contexto de la aplicación
+ */
 public class MLibre extends Application {
 
     private static MLibre instance;
@@ -17,6 +20,9 @@ public class MLibre extends Application {
         return instance.getApplicationContext();
     }
 
+    /**
+     * Instanciar la @{@link android.content.SharedPreferences}
+     */
     @Override
     public void onCreate() {
         super.onCreate();

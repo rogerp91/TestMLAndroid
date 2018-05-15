@@ -6,6 +6,9 @@ import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
+/**
+ * Clase para usar las @{@link SharedPreferences}
+ */
 public class Prefs {
 
     public final static String PREF_SUCCESSFUL_SEARCH_RESULT = "PREF_SUCCESSFUL_SEARCH_RESULT";

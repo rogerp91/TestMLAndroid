@@ -48,6 +48,9 @@ public class PictureFragment extends BaseFragment implements BindFragment {
 
     @Override
     public void bind(Object... t) {
+        if (t == null) {
+            throw new IllegalArgumentException();
+        }
         List<Picture> list = getListOfPictureFromObject(t[0]);
         bind(list);
     }

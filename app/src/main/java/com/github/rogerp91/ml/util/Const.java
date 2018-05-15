@@ -1,5 +1,8 @@
 package com.github.rogerp91.ml.util;
 
+/**
+ * Constantes globales
+ */
 public interface Const {
 
     String MODEL = "MODEL";

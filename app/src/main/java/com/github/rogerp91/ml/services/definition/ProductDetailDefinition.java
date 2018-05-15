@@ -6,6 +6,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+/**
+ *  Definición de APIs de api de ML - Búsqueda de Item
+ */
 public interface ProductDetailDefinition {
 
     @GET("items/{id}")

@@ -7,6 +7,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * Definición de APIs de api de ML - Búsqueda q
+ */
 public interface SearchDefinition {
 
     @GET("sites/{site}/search")

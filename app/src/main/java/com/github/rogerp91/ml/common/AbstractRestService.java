@@ -10,6 +10,14 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * <p>
+ * Clase base de la cual han de extender todas aquellas que deseen ser cliente de un servio REST.
+ * Esta clase se encarga bue parte de la lógica de configuración y posee métodos convenientes
+ * para customizar el cliente que se desee crear
+ *
+ * @param <T> El tipo de la interface que contiene los servicios que ha de proveer la API Rest
+ */
 public abstract class AbstractRestService<T> {
 
     private final static String TAG = AbstractRestService.class.getSimpleName();

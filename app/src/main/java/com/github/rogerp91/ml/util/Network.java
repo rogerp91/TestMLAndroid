@@ -5,6 +5,9 @@ import android.net.ConnectivityManager;
 
 import com.github.rogerp91.ml.MLibre;
 
+/**
+ * Verificar conexión de red
+ */
 public class Network {
 
     public static boolean isNetworkConnected() {

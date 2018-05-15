@@ -3,8 +3,11 @@ package com.github.rogerp91.ml.data.source;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.github.rogerp91.ml.data.Search;
+import com.github.rogerp91.ml.data.model.Search;
 
+/**
+ * Implementa una sincronización  entre datos y datos localmente persistentes
+ */
 public class SearchRepository implements SearchDataSource {
 
     private SearchDataSource mLocalSearchDataSource;
@@ -43,5 +46,10 @@ public class SearchRepository implements SearchDataSource {
     @Override
     public void saveSearch(@NonNull Search search) {
         mLocalSearchDataSource.saveSearch(search);
+    }
+
+    @Override
+    public void getSearchLike(String query, @NonNull GetSearchLikeCallback callback) {
+        mLocalSearchDataSource.getSearchLike(query, callback);
     }
 }

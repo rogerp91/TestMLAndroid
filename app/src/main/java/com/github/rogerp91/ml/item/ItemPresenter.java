@@ -4,7 +4,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.github.rogerp91.ml.R;
 import com.github.rogerp91.ml.common.SearchCallback;
-import com.github.rogerp91.ml.data.Search;
+import com.github.rogerp91.ml.data.model.Search;
 import com.github.rogerp91.ml.data.model.QuerySearch;
 import com.github.rogerp91.ml.data.model.Result;
 import com.github.rogerp91.ml.data.source.SearchDataSource;

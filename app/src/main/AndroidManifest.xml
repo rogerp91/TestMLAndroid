@@ -22,8 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".item.ItemActivity" />
         <activity android:name=".detail.DetailActivity" />
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".item.ItemActivity" />
     </application>
 
 </manifest>

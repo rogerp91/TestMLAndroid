@@ -131,7 +131,7 @@ public class ItemActivity extends BaseActivity {
         params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
     }
 
-    private SearchCallback searchCallback = search -> {
+    private ItemActivity.SearchCallback searchCallback = search -> {
 //            searchView.setSuggestions(search);
     };
 

@@ -5,8 +5,11 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.github.rogerp91.ml.data.Search;
+import com.github.rogerp91.ml.data.model.Search;
 
+/**
+ * Base de datos
+ */
 @Database(entities = {Search.class}, version = 1, exportSchema = false)
 public abstract class SearchDatabase extends RoomDatabase {
 

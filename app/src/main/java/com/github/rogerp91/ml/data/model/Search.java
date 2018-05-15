@@ -1,4 +1,4 @@
-package com.github.rogerp91.ml.data;
+package com.github.rogerp91.ml.data.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

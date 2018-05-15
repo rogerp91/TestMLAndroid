@@ -5,6 +5,10 @@ import android.support.annotation.NonNull;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * Ejecuta una tarea en un nuevo hilo
+ * See {@linktourl https://github.com/googlesamples/android-architecture}
+ */
 public class DiskIOThreadExecutor implements Executor {
 
     private final Executor mDiskIO;

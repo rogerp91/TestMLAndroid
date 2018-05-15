@@ -12,6 +12,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Servicio cliente para consumir los endpoints @{@link SearchDefinition}
+ * See {@linktourl https://es.wikipedia.org/wiki/Builder_(patr%C3%B3n_de_dise%C3%B1o)}
+ */
 public class SearchInteractor extends AbstractRestService<SearchDefinition> {
 
     private final static String TAG = SearchInteractor.class.getSimpleName();
